@@ -152,8 +152,8 @@ class Instructor extends Lambdasian {
   }
 
   // Stretch
-  grade2(student){
-    student.grade += Math.floor(Math.random() * 21) -10 // Number between -10 and 10
+  grade2(student) {
+    student.grade += Math.floor(Math.random() * 21) - 10 // Number between -10 and 10
   }
 }
 
@@ -178,7 +178,7 @@ class Student extends Lambdasian {
     this.previousBackground = data.previousBackground;
     this.className = data.className;
     this.favSubjects = data.favSubjects;
-    
+
     // Stretch
     this.grade = Math.floor(Math.random() * 100);
   }
@@ -192,8 +192,9 @@ class Student extends Lambdasian {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
   // Stretch
-  graduate(){
-    if(this.grade >= 70) return `${this.name} has graduated!`;
+  graduate() {
+    if (this.grade >= 70) return `${this.name} has graduated!`;
+    else return `${this.name} has failed!`;
   }
 }
 
@@ -234,6 +235,39 @@ class ProjectManager extends Instructor {
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+let instructor = new Instructor({
+  name: 'Luis',
+  age: 45,
+  location: 'Provo',
+  specialty: 'SQL',
+  favLanguage: 'C#',
+  catchPhrase: 'Don\'t forget the homies'
+});
+
+let projectMGR = new ProjectManager({
+  name: 'Dan',
+  age: 35,
+  location: 'San Francisco',
+  specialty: 'Node',
+  favLanguage: 'JavaScript',
+  catchPhrase: 'Keep doing what you\'re doing!',
+  gradClassName: 'Web25',
+  favInstructor: 'Luis'
+});
+
+let student = new Student({
+  name: 'Matt',
+  age: 30,
+  location: 'London',
+  previousBackground: 'Plumber',
+  className: 'WebEU 3',
+  favSubjects: ['JS', 'Node', 'Redux']
+});
+
+instructor.grade2(student);
+projectMGR.grade2(student);
+console.log(student.graduate());
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
